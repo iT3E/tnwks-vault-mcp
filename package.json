@@ -1,0 +1,25 @@
+{
+  "name": "tnwks-vault-mcp",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The reference MCP file server, served over Streamable HTTP by the official MCP TypeScript SDK, for one directory.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "src/serve.mjs",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/serve.mjs",
+    "test": "node --test \"test/**/*.test.mjs\"",
+    "build": "node --check src/serve.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/node": "2.1.2",
+    "@modelcontextprotocol/server": "2.4.0",
+    "@modelcontextprotocol/server-filesystem": "2.3.0"
+  },
+  "devDependencies": {
+    "prettier": "3.10.1"
+  }
+}
