@@ -1,0 +1,23 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  // The app-repo presets from iT3E/github-workflows (renovate/), at the
+  // release app-repo-template pins (the one the workflow callers use); a
+  // template update moves the pin. Repo-only rules go below the extends;
+  // copier update keeps them.
+  extends: [
+    "github>iT3E/github-workflows//renovate/default.json5#v1.9.5",
+    "github>iT3E/github-workflows//renovate/node.json5#v1.9.5",
+  ],
+  packageRules: [
+    {
+      // The file server and the SDK serve the files of a share. A person
+      // reads the source of each release before it merges (README "The
+      // review of the packages"), and Renovate waits 7 days for it.
+      description: "The file server and the SDK: 7 days, then a review",
+      matchDatasources: ["npm"],
+      matchPackageNames: ["@modelcontextprotocol/**"],
+      minimumReleaseAge: "7 days",
+      automerge: false,
+    },
+  ],
+}

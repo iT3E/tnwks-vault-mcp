@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# The image test. The image job of CI (build.yaml) runs it on the image that
+# it built, before any push: a failed test means no image.
+#
+# Usage: bin/image-test <image ref>
+#
+# It runs tests/test_image.py: containers of the image with a read-only root
+# file system on a Docker network of their own, and a share of fake files.
+# It needs Docker and python3 only, and no credential. `task test` runs it
+# on a workstation too.
+set -euo pipefail
+
+image="${1:?usage: bin/image-test <image ref>}"
+repo="$(cd "$(dirname "$0")/.." && pwd)"
+export IMAGE_REF="$image"
+export PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+
+cd "$repo/tests"
+python3 -m unittest -v test_image

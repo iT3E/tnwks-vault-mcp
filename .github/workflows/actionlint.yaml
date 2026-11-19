@@ -1,0 +1,24 @@
+---
+name: "Actionlint"
+
+# Managed by Copier from https://github.com/iT3E/app-repo-template (see
+# .copier-answers.yml). The logic is in the reusable workflow it calls, from
+# https://github.com/iT3E/github-workflows. The template pins that release
+# (@<sha> # vX.Y.Z), and a template release moves it here as a
+# `copier update` PR.
+#
+# actionlint (with shellcheck) on the workflows, only when a PR touches them.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+      - ".github/actionlint.yaml"
+
+permissions: {}
+
+jobs:
+  actionlint:
+    name: actionlint
+    permissions:
+      contents: read
+    uses: iT3E/github-workflows/.github/workflows/actionlint.yaml@1060ac8fcc8d8d2462ca5096698304e64b904663 # v1.9.5

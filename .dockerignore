@@ -1,0 +1,5 @@
+# Deny everything, then allow only what the Dockerfile copies.
+**
+!package.json
+!package-lock.json
+!src/
