@@ -1,3 +1,0 @@
-kind: Added
-body: 'The vault server image: the reference MCP file server 2.3.0 for the one directory /vault, served over Streamable HTTP on port 8080 by the official MCP TypeScript SDK (server 2.4.0, node 2.1.2) through a short wrapper. MCP on /mcp, a health path on /healthz that reads no file, 404 on other paths, a 2 MiB body limit, a refusal of requests with an Origin header, uid 1000, a read-only root file system, a clean stop on SIGTERM, and confineRoots on.'
-time: 2026-11-18T16:00:00.000000+00:00
